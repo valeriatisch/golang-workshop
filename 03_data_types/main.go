@@ -35,15 +35,16 @@ func main() {
 	// A string is immutable, you can assign a new value but can't change the bytes
 
 	// Different values for the same variable
-	fmt.Printf("%b \n", 42)  // binary
-	fmt.Printf("%c \n", 42)  // character
-	fmt.Printf("%d \n", 42)  // decimal
-	fmt.Printf("%o \n", 42)  // octal
-	fmt.Printf("%q \n", 42)  // quoted string
-	fmt.Printf("%#x \n", 42) // hex
-	fmt.Printf("%#X \n", 42) // hex
-	fmt.Printf("%U \n", 42)  // unicode
-	fmt.Printf("%v \n", 42)  // normal value
+	fmt.Printf("%b \n", 42)         // binary
+	fmt.Printf("%c \n", 42)         // character
+	fmt.Printf("%d \n", 42)         // decimal
+	fmt.Printf("%.2f \n", 43.44635) // floats
+	fmt.Printf("%o \n", 42)         // octal
+	fmt.Printf("%q \n", 42)         // quoted string
+	fmt.Printf("%#x \n", 42)        // hex
+	fmt.Printf("%#X \n", 42)        // hex
+	fmt.Printf("%U \n", 42)         // unicode
+	fmt.Printf("%v \n", 42)         // normal value
 
 	// Creating your own type
 
