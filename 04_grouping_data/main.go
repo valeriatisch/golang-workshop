@@ -13,7 +13,7 @@ func main() {
 	// - An array is declared by specifying the type and size of the array.
 	// - An array is indexed starting at 0.
 
-	// Length of an array is the number of elements it was decleared with.
+	// Length of an array is the number of elements it was declared with.
 
 	// Slices
 	// - A slice is a dynamically-sized, flexible view into the elements of an array.
