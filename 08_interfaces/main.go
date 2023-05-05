@@ -13,6 +13,4 @@ package main
 
 func main() {
 
-	// Empty interface
-	// An interface with no methods, used to handle values of unknown type.
 }
