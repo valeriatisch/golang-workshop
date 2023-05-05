@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"math/rand"
 )
 
@@ -30,4 +31,15 @@ func send(eveCh, oddCh, quitCh chan<- int) {
 
 func receive(eveCh, oddCh, quitCh <-chan int) {
 	// Select statement
+	for {
+		select {
+		case v, ok := <-eveCh:
+			fmt.Println("The number", v, "is even", ok)
+		case v, ok := <-oddCh:
+			fmt.Println("The number", v, "is odd", ok)
+		case v, ok := <-quitCh:
+			fmt.Println("Quitting...", v, ok)
+			return
+		}
+	}
 }
