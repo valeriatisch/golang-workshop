@@ -1,12 +1,29 @@
 package pws
 
-// import "unicode"
+import "unicode"
 
 func ValidatePassword(password string) bool {
-	// TODO:
-	// Write your logic here
-	// For example, check for password length, uppercase, lowercase, digit etc.
-	// Lookup the unicode package for functions you can use
 
+	// Password must be at least 8 characters long
+	if len(password) < 8 {
+		return false
+	}
+
+	// Password must contain at least one uppercase letter, one lowercase letter, and one digit
+	var hasUpper, hasLower, hasDigit bool
+	for _, char := range password {
+		if unicode.IsUpper(char) {
+			hasUpper = true
+		} else if unicode.IsLower(char) {
+			hasLower = true
+		} else if unicode.IsDigit(char) {
+			hasDigit = true
+		}
+	}
+	if !hasUpper || !hasLower || !hasDigit {
+		return false
+	}
+
+	// Password is valid
 	return true
 }
