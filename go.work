@@ -1,0 +1,6 @@
+go 1.20
+
+use (
+    ./02_packages
+    ./exercises/02_password
+)
