@@ -13,9 +13,9 @@ func main() {
 	// - A channel will block by default if it is full.
 
 	// The following won't work
-	// ch0 := make(chan int)
-	// ch0 <- 42 // Channel blocks here, fatal error: all goroutines are asleep - deadlock!
-	// fmt.Println(<-ch0)
+	// ch := make(chan int)
+	// ch <- 42 // Channel blocks here, fatal error: all goroutines are asleep - deadlock!
+	// fmt.Println(<-ch)
 
 	// Unbuffered channel
 	// - An unbuffered channel is a channel that can hold only one value.
@@ -25,7 +25,7 @@ func main() {
 	go func() {
 		unbufCh <- "Willi"
 	}()
-	// The main-goroutine continues and then receives the value from the channel. 
+	// The main-goroutine continues and then receives the value from the channel.
 	fmt.Println(<-unbufCh) // Channel blocks here until the value is received from the goroutine above.
 
 	// Buffered channel
@@ -39,4 +39,13 @@ func main() {
 	bufCh <- "Luna"
 	// The following won't work
 	// bufCh <- "Lea" // This is waiting till a value is consumed from the channel so a space becomes free.
+
+	ch := make(chan int)
+	go foo(ch, 34)
+	go foo(ch, 35)
+	fmt.Println(<-ch, ",", <-ch)
+}
+
+func foo(ch chan int, x int) {
+	ch <- x
 }

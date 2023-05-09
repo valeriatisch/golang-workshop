@@ -3,17 +3,13 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"sync"
 	"time"
 )
 
-// Mutex is a mutual exclusion lock.
-// A mutex allows only one goroutine to access the shared resource at a time.
-// RWMutex allows multiple readers to access the shared resource simultaneously but only one writer at a time.
-
 type Player struct {
 	health int
-	// Add mutex
-
+	mu     sync.RWMutex
 }
 
 func NewPlayer() *Player {
@@ -23,12 +19,14 @@ func NewPlayer() *Player {
 }
 
 func (p *Player) getHealth() int {
-	// Lock
+	p.mu.RLock()
+	defer p.mu.RUnlock()
 	return p.health
 }
 
 func (p *Player) damage(amount int) {
-	// Lock
+	p.mu.Lock()
+	defer p.mu.Unlock()
 	p.health -= amount
 	fmt.Println("Player damaged with amount:", amount)
 }

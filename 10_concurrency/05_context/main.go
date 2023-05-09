@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 	"log"
-	"time"
 	"math/rand"
 	"runtime"
+	"time"
 )
 
 type Response struct {
@@ -52,7 +52,7 @@ func fetchUserData(ctx context.Context, userID int) (int, error) {
 		select {
 		case <-ctx.Done(): // empty struct
 			return 0, fmt.Errorf("Fetching data from 3rd party exceeded deadline.")
-			
+
 		case response := <-responseCh: // If it's on time, we get a response
 			return response.val, response.err
 		}

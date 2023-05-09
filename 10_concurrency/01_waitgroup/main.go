@@ -3,10 +3,14 @@ package main
 import (
 	"fmt"
 	"runtime"
+	"sync"
 	"time"
 )
 
 // There is always an init() running before main()
+func init() {
+	fmt.Println("Initialization...")
+}
 
 func main() {
 	// Computer specs
@@ -17,18 +21,45 @@ func main() {
 
 	start := time.Now()
 
-	// A goroutine is a lightweight thread managed by the Go runtime.
-	// A goroutine is capable of running concurrently with other functions.
-	// Launch a goroutine
+	var wG sync.WaitGroup
+	wG.Add(3)
 
+	var userName string
+	// Launch a goroutine
+	go func() {
+		userName = fetchUser()
+		fmt.Println("Goroutines:\t", runtime.NumGoroutine())
+		wG.Done()
+	}()
 	// It takes some time to launch a goroutine, during which the main() function continues to run.
 	// The main() function might finish before the goroutine does.
 	// To avoid this, we can use the WaitGroup.
-	// Add(int): Add increases the WaitGroup counter by the given delta.
-	// Done(): Done decrements the WaitGroup counter by 1.
-	// Wait(): Wait blocks until the WaitGroup counter is zero.
 
-	// Goroutines in for-loop
+	var likes int
+	go func() {
+		likes = fetchUserLikes(userName)
+		wG.Done()
+	}()
+
+	var match string
+	go func() {
+		match = fetchUserMatch(userName)
+		wG.Done()
+	}()
+
+	wG.Add(1000)
+	for i := 0; i < 1000; i++ {
+		go func() {
+			fetchUserLikes(userName)
+			wG.Done()
+		}()
+	}
+
+	wG.Wait()
+
+	fmt.Println("\nUser:", userName)
+	fmt.Println("Likes:", likes)
+	fmt.Println("Match:", match)
 
 	fmt.Println("\nThat took", time.Since(start))
 }

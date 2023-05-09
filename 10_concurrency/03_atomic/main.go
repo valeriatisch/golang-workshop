@@ -3,11 +3,9 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"sync/atomic"
 	"time"
 )
-
-// Atomic: low-level atomic memory operations on primitive data types, which are safe for concurrent access
-// Atomic is much faster than mutexes.
 
 type Player struct {
 	health int32
@@ -20,31 +18,32 @@ func NewPlayer() *Player {
 }
 
 func (p *Player) getHealth() int {
-	// Atomic read
-	return 1
-} 
+	return int(atomic.LoadInt32(&p.health))
+}
 
 func (p *Player) damage(amount int) {
-	// atomic write
-
+	// atomic.StoreInt32(&p.health, int32(int(p.health)-amount))
+	atomic.AddInt32(&p.health, -int32(amount))
 	fmt.Println("Player damaged with amount:", amount)
 }
 
 func startUI(p *Player) {
+	ticker := time.NewTicker(time.Millisecond * 800)
 	for {
 		fmt.Printf("Player health: %d\n", p.getHealth())
-		time.Sleep(time.Millisecond * 800)
+		<-ticker.C
 	}
 }
 
 func startGame(p *Player) {
-	for { 
+	ticker := time.NewTicker(time.Millisecond * 700)
+	for {
 		p.damage(rand.Intn(50))
 		if p.getHealth() <= 0 {
 			fmt.Println("Game over!")
 			break
 		}
-		time.Sleep(time.Millisecond * 700)
+		<-ticker.C
 	}
 }
 
@@ -53,5 +52,3 @@ func main() {
 	go startUI(player)
 	startGame(player)
 }
-
-// 
