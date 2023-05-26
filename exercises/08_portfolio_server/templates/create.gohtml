@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Create User and Portfolio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        /* Additional custom styles */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: #6a11cb;
+            font-weight: 700;
+        }
+
+
+
+        .container {
+            max-width: 700px;
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #333333;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333333;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .network {
+            margin-bottom: 1rem;
+        }
+
+        .btn-download {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Create User and Portfolio</h1>
+        <form action="/" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" name="username" id="username" required>
+            </div>
+            <div class="form-group">
+                <label for="portfolioName">Portfolio Name:</label>
+                <input type="text" class="form-control" name="name" id="portfolioName" required>
+            </div>
+            <div class="form-group">
+                <label for="portfolioTitle">Portfolio Title:</label>
+                <input type="text" class="form-control" name="title" id="portfolioTitle" required>
+            </div>
+            <div class="form-group">
+                <label for="about">About Me:</label>
+                <textarea class="form-control" name="about" id="about" rows="4" required></textarea>
+            </div>
+            <h3>Networks</h3>
+            <div class="network">
+                <div class="form-row">
+                    <div class="col">
+                        <label for="networkName">Network Name:</label>
+                        <input type="text" class="form-control" name="networkName" required>
+                    </div>
+                    <div class="col">
+                        <label for="networkLink">Network Link:</label>
+                        <input type="text" class="form-control" name="networkLink" required>
+                    </div>
+                </div>
+            </div>
+            <div class="network">
+                <div class="form-row">
+                    <div class="col">
+                        <label for="networkName2">Network Name:</label>
+                        <input type="text" class="form-control" name="networkName2">
+                    </div>
+                    <div class="col">
+                        <label for="networkLink2">Network Link:</label>
+                        <input type="text" class="form-control" name="networkLink2">
+                    </div>
+                </div>
+            </div>
+            <div class="network">
+                <div class="form-row">
+                    <div class="col">
+                        <label for="networkName3">Network Name:</label>
+                        <input type="text" class="form-control" name="networkName3">
+                    </div>
+                    <div class="col">
+                        <label for="networkLink3">Network Link:</label>
+                        <input type="text" class="form-control" name="networkLink3">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="photo">Photo:</label>
+                <input type="file" class="form-control-file" name="photo" id="photo" accept="image/*" required>
+            </div>
+            <div class="btn-download">
+                <input type="submit" class="btn btn-primary" value="Download HTML file">
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>

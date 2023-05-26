@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book List</title>
+</head>
+<body>
+    <h1>Book List</h1>
+    <ul>
+    {{ range . }}
+        <li><a href="/books/{{ .ID }}">{{ .Title }}</a></li>
+    {{ end }}
+    </ul>
+    <h2> Add a new book </h2>
+    <form action="/books" method="post">
+        <label for="title"> Title: </label><br>
+        <input type="text" id="title" name="title"><br>
+        <label for="author"> Author: </label><br>
+        <input type="text" id="author" name="author"><br>
+        <input type="submit" value="Add Book">
+    </form>
+</body>
+</html>

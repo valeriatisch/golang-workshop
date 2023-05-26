@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Upload</title>
+</head>
+<body>
+    <h1>Upload an Image</h1>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required>
+        <br><br>
+        <input type="submit" value="Upload">
+    </form>
+    {{ if . }}
+    <p>{{ . }}</p>
+    {{ end }}
+</body>
+</html>
