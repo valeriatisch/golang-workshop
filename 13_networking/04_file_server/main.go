@@ -14,9 +14,6 @@ func main() {
 	// Serve about.html at the "/about" path
 	http.HandleFunc("/about", serveAbout)
 
-	// Serve static files (including styles.css) under the "/static/" path prefix
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
-
 	// Start the server
 	log.Println("Server is running at http://localhost:8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
