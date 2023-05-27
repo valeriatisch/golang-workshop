@@ -28,16 +28,17 @@ func handleSetMyCookie(w http.ResponseWriter, req *http.Request) {
 }
 
 func handleMyCookie(w http.ResponseWriter, req *http.Request) {
-	// Check if the cookie exists
+	// TODO:
+	// Check if my-cookie exists
 
 	// If the cookie doesn't exist, redirect the user to the "/set" path
 
-	// If the cookie exists, extract the its value
+	// If the cookie exists, extract its value
 
 	// Update the cookie with the new count
 
 	// Display the visit count to the user
-	
+
 }
 
 func handleReadMyCookie(w http.ResponseWriter, req *http.Request) {
