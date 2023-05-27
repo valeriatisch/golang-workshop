@@ -15,12 +15,14 @@ func main() {
 
 	// 0755
 	// 7: owner has read, write, and execute permissions
-	// 5: grouphas read and execute permissions
+	// 5: groupes have read and execute permissions
 	// 5: others have read and execute permissions
 
 	// Create directory with a parent directory
 
 	// Read the contents of a directory
+
+	// Create file
 
 	// Open a file for read only
 
@@ -36,7 +38,7 @@ func main() {
 
 	// Rename or move file
 
-	// TODO: Copy file
+	// Copy bytes from one file to another, look at Writer & Reader interface & what File implements
 
 	// Delete file or directory
 
@@ -48,16 +50,18 @@ func main() {
 
 	// Get some file stats
 
+	// TODO: Copy file
+
 	// TODO: Watch a file
 
 }
 
-// TODO: write a function which copies a file, hint: os.Create() & io.Copy()
-func copyFile(src string, dst string) {
+func getFileStats(fileName string) {
 
 }
 
-func getFileStats(fileName string) {
+// TODO: write a function which copies a file
+func copyFile(src string, dst string) {
 
 }
 
