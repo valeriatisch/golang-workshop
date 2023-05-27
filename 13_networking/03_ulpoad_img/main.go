@@ -11,7 +11,7 @@ import (
 
 func main() {
 	http.HandleFunc("/", uploadHandler)
-	http.HandleFunc("/imgs", listFilesHandler)
+	http.HandleFunc("/imgs/", listFilesHandler)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
