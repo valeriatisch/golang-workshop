@@ -30,6 +30,8 @@ func init() {
 
 func main() {
 	// Register the functions to handle requests to "/books" & "/createbook"
+	http.HandleFunc("/books", handleBooks)
+	http.HandleFunc("/books/", handleBooks)
 
 	// Start the HTTP server
 	fmt.Println("Listening on port 8080")
@@ -69,7 +71,7 @@ func handleBooks(resp http.ResponseWriter, req *http.Request) {
 				if book.ID == id {
 					err = tmpl.ExecuteTemplate(resp, "book.gohtml", book)
 					if err != nil {
-						http.Error(resp, "Internal Server Error", http.StatusInternalServerError)
+						http.Error(resp, "Internal Server Error", http.StatusNotFound)
 					}
 					return
 				}
@@ -82,12 +84,6 @@ func handleBooks(resp http.ResponseWriter, req *http.Request) {
 		}
 	// If it's a POST request
 	case http.MethodPost:
-		// Return a 404 is the path is not "/books" or "/books/"
-		if req.URL.Path != "/books" && req.URL.Path != "/books/" {
-			http.NotFound(resp, req)
-			return
-		}
-
 		// Parse the form data with req.ParseForm()
 		if err := req.ParseForm(); err != nil {
 			http.Error(resp, "Failed to parse form", http.StatusBadRequest)
@@ -111,13 +107,3 @@ func handleBooks(resp http.ResponseWriter, req *http.Request) {
 	}
 }
 
-func createBook(resp http.ResponseWriter, req *http.Request) {
-	// Parse the form data with req.ParseForm()
-
-	// Put data from req.FormValue() into a Book struct
-
-	// Append new book to the books slice
-
-	// Redirect to the book list
-
-}
