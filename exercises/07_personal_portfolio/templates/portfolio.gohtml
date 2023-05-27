@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>{{ .Name }} - {{ .Title }}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -15,7 +16,8 @@
         }
 
         .container {
-            max-width: 1000px; /* Increase the max-width as desired */
+            max-width: 1000px;
+            /* Increase the max-width as desired */
         }
 
         header {
@@ -53,11 +55,13 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            gap: 1rem; /* Adjust the gap value as desired */
+            gap: 1rem;
+            /* Adjust the gap value as desired */
         }
 
         .project-card {
-            flex-basis: calc(33.33% - 1rem); /* Adjust the flex-basis and gap values to accommodate three projects */
+            flex-basis: calc(33.33% - 1rem);
+            /* Adjust the flex-basis and gap values to accommodate three projects */
             margin-bottom: 1rem;
             text-align: center;
         }
@@ -90,6 +94,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <header>
@@ -114,13 +119,13 @@
             <h3>Projects</h3>
             <div class="projects-container">
                 TODO: range over projects
-                    <div class="card project-card">
-                        <div class="card-body">
-                            <h5 class="card-title text-center"> TODO: add project title </h5>
-                            <p class="card-text"> TODO: add project description </p>
-                            <a href=" TODO: add project link " class="btn btn-primary mt-auto">View Project</a>
-                        </div>
+                <div class="card project-card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center"> TODO: add project title </h5>
+                        <p class="card-text"> TODO: add project description </p>
+                        <a href=" TODO: add project link " class="btn btn-primary mt-auto">View Project</a>
                     </div>
+                </div>
 
             </div>
         </section>
