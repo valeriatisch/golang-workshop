@@ -5,7 +5,6 @@ import (
 	"log"
 	"net/http"
 	"strconv"
-	"time"
 )
 
 var (
@@ -22,7 +21,7 @@ func main() {
 }
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
-	// TODO: Check if the cookie exists
+	// TODO: Check if mycookie exists
 	// If the cookie doesn't exist, display submit.gohtml with renderTemplate()
 	// If the cookie exists, redirect to the welcome page
 
@@ -54,24 +53,28 @@ func welcomeHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Get the username from the cookie
+	// Get the uuid from the cookie
 	uid := cookie.Value
 
 	// Get the visit count from the cookie
 	count := 1
 	countCookie, err := r.Cookie("visitcount")
-	if err == nil {
+	if err == http.ErrNoCookie {
+		// If the cookie doesn't exist, create a new one
+		countCookie = &http.Cookie{
+			Name:  "visitcount",
+			Value: strconv.Itoa(count),
+			Path:  "/",
+		}
+	} else if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	} else {
+		// Update cookie value
 		count, _ = strconv.Atoi(countCookie.Value)
-		count++
+		countCookie.Value = strconv.Itoa(count + 1)
 	}
 
-	// Create or update the visit count cookie
-	countCookie = &http.Cookie{
-		Name:    "visitcount",
-		Value:   strconv.Itoa(count),
-		Expires: time.Now().Add(24 * time.Hour),
-		Path:    "/",
-	}
 	http.SetCookie(w, countCookie)
 
 	// Data for rendering the welcome template
