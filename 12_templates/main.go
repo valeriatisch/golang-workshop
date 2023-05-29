@@ -31,7 +31,7 @@ type Book struct {
 }
 
 func main() {
-	// TODO: Create a file called index.html
+	// Create a file called index.html
 
 	// Placeholder {{ . }}
 
