@@ -2,10 +2,10 @@
 <html>
 
 <head>
-    <title>{{ .Name }} - {{ .Title }}</title>
+    <title>Jane Foster - Software Engineer</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <style>
-        /* Additional custom styles */
+         
         body {
             display: flex;
             justify-content: center;
@@ -17,7 +17,7 @@
 
         .container {
             max-width: 1000px;
-            /* Increase the max-width as desired */
+             
         }
 
         header {
@@ -56,12 +56,12 @@
             flex-wrap: wrap;
             justify-content: space-between;
             gap: 1rem;
-            /* Adjust the gap value as desired */
+             
         }
 
         .project-card {
             flex-basis: calc(33.33% - 1rem);
-            /* Adjust the flex-basis and gap values to accommodate three projects */
+             
             margin-bottom: 1rem;
             text-align: center;
         }
@@ -98,40 +98,58 @@
 <body>
     <div class="container">
         <header>
-            <h1>{{ .Name }}</h1>
-            <h2>{{ .Title }}</h2>
+            <h1>Jane Foster</h1>
+            <h2>Software Engineer</h2>
             <br>
             <img src="data/profile.jpg" class="profile-img" alt="Profile Photo">
             <br>
             <ul class="networks-list">
-                {{ range .Networks }}
-                <li><a href="{{ .Link }}" target="_blank"> {{ .Name }} </a></li>
-                {{ end }}
+                
+                <li><a href="https://www.linkedin.com/in/jane-foster" target="_blank"> LinkedIn </a></li>
+                
+                <li><a href="github.com/jane-foster" target="_blank"> GitHub </a></li>
+                
             </ul>
         </header>
 
         <section id="about">
             <h3>About Me</h3>
-            <p>{{ .About }}</p>
+            <p>Welcome to my portfolio website! As a passionate software engineer, I showcase my skills, projects, and expertise in web development. Explore my work and get in touch to discuss exciting opportunities!</p>
         </section>
 
         <section id="projects">
             <h3>Projects</h3>
             <div class="projects-container">
-                {{ range .Projects }}
+                
                 <div class="card project-card">
                     <div class="card-body">
-                        <h5 class="card-title text-center">{{ .Title }}</h5>
-                        <p class="card-text">{{ .Description }}</p>
-                        <a href="{{ .Link }}" class="btn btn-primary mt-auto">View Project</a>
+                        <h5 class="card-title text-center">E-commerce Platform</h5>
+                        <p class="card-text">Developed a scalable e-commerce platform using Go and React, enabling seamless online shopping experiences. Implemented features such as product catalog, shopping cart, and secure payment integration.</p>
+                        <a href="https://example.com/project1" class="btn btn-primary mt-auto">View Project</a>
                     </div>
                 </div>
-                {{ end }}
+                
+                <div class="card project-card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Data Analytics Dashboard</h5>
+                        <p class="card-text">Built a data analytics dashboard using Python and Tableau, enabling real-time insights and visualization of key business metrics. Integrated data from various sources and created interactive visualizations for informed decision-making.</p>
+                        <a href="https://example.com/project2" class="btn btn-primary mt-auto">View Project</a>
+                    </div>
+                </div>
+                
+                <div class="card project-card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Smart Home Automation</h5>
+                        <p class="card-text">Developed a smart home automation system using IoT technologies and a mobile app. The system allows users to remotely control and monitor home appliances, lighting, and security systems.</p>
+                        <a href="https://example.com/project3" class="btn btn-primary mt-auto">View Project</a>
+                    </div>
+                </div>
+                
             </div>
         </section>
 
         <footer>
-            <p class="text-center">© {{ .Name }}. All rights reserved.</p>
+            <p class="text-center">© Jane Foster. All rights reserved.</p>
         </footer>
     </div>
 </body>
