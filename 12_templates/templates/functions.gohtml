@@ -7,8 +7,8 @@
 </head>
 
 <body>
-	<h3> is going to be someday. </h3>
-	<p> </p>
+	<h3> {{ upper .Name }} is going to be {{ .Age|double }} someday. </h3>
+	<p> {{ index .Name 1 }} </p>
 </body>
 
 </html>
