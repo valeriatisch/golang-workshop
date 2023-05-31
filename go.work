@@ -7,4 +7,5 @@ use (
 	./15_documentation
 	./16_testing
 	./exercises/09_api
+	./exercises/10_structure
 )
